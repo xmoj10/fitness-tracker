@@ -1,0 +1,28 @@
+.workout-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Replaces gutterSize */
+  padding: 0 16px; /* Horizontal padding */
+  justify-content: center; /* Center cards */
+}
+
+.workout-card-wrapper {
+  flex: 1 1 100%; /* Default to full width on small screens */
+  max-width: 100%;
+}
+
+/* Tablet breakpoint */
+@media (min-width: 600px) {
+  .workout-card-wrapper {
+    flex: 1 1 calc(50% - 20px); /* 2 columns, accounting for gap */
+    max-width: calc(50% - 20px);
+  }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 960px) {
+  .workout-card-wrapper {
+    flex: 1 1 calc(33.333% - 20px); /* 3 columns, accounting for gap */
+    max-width: calc(33.333% - 20px);
+  }
+}

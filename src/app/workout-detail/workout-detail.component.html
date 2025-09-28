@@ -1,0 +1,83 @@
+<mat-card class="h-100" [class.completed]="workout.completed">
+  <!-- Normal Workout View -->
+  <ng-container *ngIf="!workout.isRestDay || workout.exercises.length > 0">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ workout.title }}</mat-card-title>
+        <mat-chip-listbox>
+          <mat-chip [ngClass]="getFocusColorClass(workout.day)" selected>{{ workout.focus }}</mat-chip>
+        </mat-chip-listbox>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-accordion multi="true">
+        <mat-expansion-panel *ngFor="let exercise of workout.exercises">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ exercise.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ exercise.sets.length }} sets of {{ exercise.reps }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p class="exercise-description">{{ exercise.description }}</p>
+          <div class="sets-container">
+            <mat-chip-listbox aria-label="Set selection">
+              <mat-chip *ngFor="let set of exercise.sets" (click)="toggleSetCompleted(set)" [class.set-completed]="set.completed">
+                Set {{ set.id }}
+              </mat-chip>
+            </mat-chip-listbox>
+          </div>
+          <a mat-raised-button color="primary" [href]="getExerciseUrl(exercise.name)" target="_blank" rel="noopener noreferrer">Watch Video</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="!workout.completed" mat-flat-button style="background-color: var(--theme-primary); color: #fff;" (click)="toggleCompleted()">
+        Mark as Completed
+      </button>
+      <button *ngIf="workout.completed" mat-flat-button style="background-color: var(--completed-color); color: #fff;" (click)="toggleCompleted()">
+        ✓ Completed
+      </button>
+    </mat-card-actions>
+  </ng-container>
+
+  <!-- Rest Day View with Character -->
+  <ng-container *ngIf="workout.isRestDay && workout.exercises.length === 0">
+    <div class="rest-day-character">
+      <!-- Conditionally render SVG based on restDayShape -->
+      <ng-container [ngSwitch]="workout.restDayShape">
+        <!-- Cute Blob SVG -->
+        <svg *ngSwitchCase="'blob'" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FFD1DC" d="M100,20 C140,0 180,40 180,80 C180,120 160,160 120,180 C80,200 40,160 20,120 C0,80 60,40 100,20 Z" />
+          <g class="face">
+            <circle class="eye" cx="90" cy="90" r="5" fill="#6D6D6D"/>
+            <circle class="eye" cx="110" cy="90" r="5" fill="#6D6D6D"/>
+            <path class="mouth" d="M 95 105 Q 100 115 105 105" stroke="#6D6D6D" stroke-width="2" fill="none"/>
+          </g>
+          <g class="face-surprised">
+            <circle class="eye" cx="90" cy="90" r="7" fill="#6D6D6D"/>
+            <circle class="eye" cx="110" cy="90" r="7" fill="#6D6D6D"/>
+            <circle class="mouth" cx="100" cy="110" r="10" fill="#6D6D6D"/>
+          </g>
+        </svg>
+        <!-- Default Cute Bunny SVG -->
+        <svg *ngSwitchDefault viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#ADD8E6" d="M66.3,-28.8C79.8,-3.3,80.4,29.9,65.1,51.1C49.8,72.3,18.6,81.5,-10.9,78.3C-40.4,75.1,-68.2,59.5,-79.1,35.9C-90,-7.7,-84,-59.3,-65.2,-79.7C-46.4,-100.1,-14.8,-89.3,-0.5,-88.8C13.8,-88.3,27.6,-98.1,38.3,-90.2C49,-82.3,52.8,-54.3,66.3,-28.8Z" transform="translate(100 100)" />
+          <g class="face">
+            <circle class="eye" cx="85" cy="80" r="5" fill="#6D6D6D"/>
+            <circle class="eye" cx="115" cy="80" r="5" fill="#6D6D6D"/>
+            <path class="mouth" d="M 95 95 Q 100 105 105 95" stroke="#6D6D6D" stroke-width="2" fill="none"/>
+          </g>
+          <g class="face-surprised">
+            <circle class="eye" cx="85" cy="80" r="7" fill="#6D6D6D"/>
+            <circle class="eye" cx="115" cy="80" r="7" fill="#6D6D6D"/>
+            <circle class="mouth" cx="100" cy="100" r="10" fill="#6D6D6D"/>
+          </g>
+        </svg>
+      </ng-container>
+      <h2 class="mat-h2" style="color: var(--theme-text-secondary);">Rest Day!</h2>
+      <p style="color: var(--theme-text-secondary);">Enjoy your break!</p>
+    </div>
+  </ng-container>
+</mat-card>

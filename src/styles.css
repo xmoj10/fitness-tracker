@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import the pink-bluegrey theme as a base */
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+:root {
+  --theme-primary: #ffb6c1; /* Light Pink */
+  --theme-accent: #f2a2e8; /* Lighter Pink */
+  --theme-background: #fff0f5; /* Lavender Blush */
+  --theme-card-bg: #fff5f7; /* Softer Pink */
+  --theme-expansion-panel-bg: #ffedf0; /* Slightly Darker Softer Pink */
+  --theme-text-primary: #c2185b; /* Dark Pink */
+  --theme-text-secondary: #d81b60; /* Lighter Pink */
+  --completed-color: #d3a1a1;
+  --theme-description-color: #c2185b; /* Darker, saturated pink */
+  --mat-expansion-header-text-color: #c2185b !important;
+  --mat-expansion-header-description-color: #c2185b !important;
+  --mat-expansion-container-text-color: #c2185b !important;
+}
+
+body {
+  background-color: var(--theme-background);
+  /* Cherry Blossom SVG Background */
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffc0cb' fill-opacity='0.4'%3E%3Cpath d='M30 30c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6zm-12 0c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6zm24 0c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6zm-12 12c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6-6-2.686-6-6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color: var(--theme-text-primary);
+}
+
+/* Force no-wrap on expansion panel titles globally */
+.mat-expansion-panel-header .mat-panel-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

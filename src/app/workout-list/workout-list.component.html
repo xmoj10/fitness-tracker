@@ -1,0 +1,8 @@
+<div class="mt-4">
+  <h1 class="mat-display-1 text-center mb-4">Weekly Workout Plan</h1>
+  <div class="workout-list-container">
+    <div *ngFor="let workout of workouts" class="workout-card-wrapper">
+      <app-workout-detail [workout]="workout"></app-workout-detail>
+    </div>
+  </div>
+</div>

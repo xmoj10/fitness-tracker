@@ -1,0 +1,153 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.mat-mdc-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--theme-card-bg);
+}
+
+.mat-mdc-card-content {
+  flex-grow: 1;
+}
+
+.mat-mdc-card-actions {
+  padding: 0;
+  margin: 0;
+}
+
+.mat-mdc-card.completed {
+  background-color: #fce4ec; /* Lighter pink for completed card */
+}
+
+.exercise-description {
+  color: #c2185b;
+  margin-bottom: 16px;
+}
+
+.sets-container {
+  margin: 16px 0;
+}
+
+.mat-mdc-chip {
+  background-color: #f8f8f8;
+  color: var(--theme-text-primary);
+}
+
+mat-chip-listbox .mat-mdc-chip.set-completed {
+  background-color: #e91e63 !important;
+  color: #fff !important;
+}
+
+/* Allow title to wrap */
+.mat-mdc-card-title {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Adjust title group for better alignment with wrapped titles */
+.mat-mdc-card-title-group {
+  margin-bottom: 12px;
+}
+
+.mat-mdc-card-actions button {
+  width: 100%;
+  border-radius: 0;
+}
+
+.rest-day-character {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.rest-day-character svg {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(-10deg); }
+  30% { transform: rotate(10deg); }
+  45% { transform: rotate(-8deg); }
+  60% { transform: rotate(8deg); }
+  75% { transform: rotate(-4deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.face-surprised {
+  display: none;
+}
+
+.rest-day-character svg:hover .face {
+  display: none;
+}
+
+.rest-day-character svg:hover .face-surprised {
+  display: block;
+}
+
+.rest-day-character svg:hover {
+  animation: wobble 0.5s ease-in-out;
+}
+
+.mat-expansion-panel {
+  background-color: var(--theme-expansion-panel-bg);
+}
+
+.mat-expansion-panel-header .mat-panel-title {
+  flex-grow: 1;
+}
+
+.mat-expansion-panel-content {
+  color: #c2185b; /* Set content text to deep pink */
+}
+
+.mat-expansion-indicator::after {
+  color: var(--theme-description-color);
+}
+
+.mat-expansion-panel-header .mat-panel-description {
+  color: var(--theme-description-color); /* Darker pink for description */
+  text-align: right;
+  flex-grow: 0;
+}
+
+/* Rainbow Colors */
+.color-1, .color-1 .mdc-evolution-chip__text-label {
+  background-color: #ff6b6b !important;
+  color: #fff !important;
+}
+.color-2, .color-2 .mdc-evolution-chip__text-label {
+  background-color: #ffb347 !important;
+  color: #fff !important;
+}
+.color-3, .color-3 .mdc-evolution-chip__text-label {
+  background-color: #fdfd96 !important;
+  color: #555 !important;
+}
+.color-4, .color-4 .mdc-evolution-chip__text-label {
+  background-color: #77dd77 !important;
+  color: #fff !important;
+}
+.color-5, .color-5 .mdc-evolution-chip__text-label {
+  background-color: #50c878 !important;
+  color: #fff !important;
+}
+.color-6, .color-6 .mdc-evolution-chip__text-label {
+  background-color: #6a9eda !important;
+  color: #fff !important;
+}
+.color-7, .color-7 .mdc-evolution-chip__text-label {
+  background-color: #836fff !important;
+  color: #fff !important;
+}
